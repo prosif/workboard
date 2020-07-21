@@ -1,27 +1,26 @@
+const https = require("https");
 const http = require("http");
 const fs = require('fs');
 const path = require('path');
+const config = require('./config');
 
 const PATH_MAP = {
-    "/": { 
+    "/workboard": {
         path: "web/index.html",
         contentType: "text/html"
     },
-    "/app.js": {
+    "/workboard/app.js": {
         path: "src/app.js",
         contentType: "text/javascript"
-    },
-    "/bundle.js": {
-        path: "web/bundle.js",
-        contentType: "text/javascript"
-    },
-    "/app.css": {
-        path: "web/app.css",
-        contentType: "text/css"
     }
 };
 
-http.createServer((req, res) => {
+const options = {
+    key: fs.readFileSync(config.SSL_KEY_PATH),
+    cert: fs.readFileSync(config.SSL_CERT_PATH)
+};
+
+https.createServer(options, (req, res) => {
     let requestPath = req.url;
 
     const queryParamIndex = requestPath.indexOf("?");
@@ -41,4 +40,5 @@ http.createServer((req, res) => {
         res.statusCode = 404;
         res.end();
     }
-}).listen(80);
+}).listen(443);
+
