@@ -1,0 +1,19 @@
+{
+  "name": "workboard",
+  "version": "0.4.2",
+  "description": "A simple workboard app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prosif/workboard.git"
+  },
+  "author": "Joseph Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prosif/workboard/issues"
+  },
+  "homepage": "https://github.com/prosif/workboard#readme"
+}
